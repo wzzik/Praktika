@@ -1,0 +1,70 @@
+﻿<Page x:Class="Diplom2.OtgruzkaVTD"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1050"
+      Title="OtgruzkaVTD" IsVisibleChanged="Page_IsVisibleChanged" >
+
+    <StackPanel Orientation="Horizontal"  Background="#FF949191">
+        <StackPanel Orientation="Vertical" Width="140" Background="#FF842E2E">
+            <Button Content="Меню" Width="120" Height="40" Margin="10,10,0,19" Click="Button_Click" HorizontalAlignment="Left" FontSize="18" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+            <Button Height="35"  Width="120" Click="Button_Click_2" HorizontalAlignment="Left" Content="ВТД" Margin="10,0,0,5" FontSize="18" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+            <Button Height="35"  Width="120" Click="Button_Click_3" HorizontalAlignment="Left" Content="ПТД" Margin="10,5,0,5" FontSize="18" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+            <Button Height="35"  Width="120" Click="Button_Click_4" HorizontalAlignment="Left" Content="Накладная" Margin="10,5,0,5" FontSize="18" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+
+        </StackPanel >
+        <StackPanel Orientation="Vertical" Margin="0,0,0,0" VerticalAlignment="Top" Width="911" Height="Auto" Background="#FF949191">
+            <StackPanel>
+                <Label Content="Отчет по остаткам ВТД" FontSize="20" FontFamily="Arial"/>
+            </StackPanel >
+            <StackPanel Orientation="Horizontal"  Width="907" Margin="0,0,0,5" HorizontalAlignment="Center" >
+                <Label Content="Фильтр по месяцу" FontSize="16" BorderBrush="#FF5F5C5C"/>
+                <ComboBox HorizontalAlignment="Right" Margin="0,0,240,0"  Name="CmbMes" Width="120" SelectionChanged="Cmb_SelectionChanged" FontSize="16"/>
+                <Button  Content="➕Добавить" Width="100" Height="30" HorizontalAlignment="Right" Margin="0,0,5,0" Click="Button_Click_1" FontSize="16" Background="#FF842E2E" Foreground="White" BorderBrush="#FF5F5C5C"/>
+                <Button Content="⌫Удалить"  Name="BtnDelete" Click="BtnDelete_Click" FontSize="16" Background="#FF842E2E" Foreground="White" BorderBrush="#FF5F5C5C"/>
+                <Button Content="🔄Обновить"  Name="BtnObnov" Click="BtnObnov_Click_1" Margin="5,0,5,0" FontSize="16" Background="#FF842E2E" Foreground="White" BorderBrush="#FF5F5C5C"/>
+                <Button Content="📋Отчет" Name="BtnOtcet"  Width="100" Click="BtnOtcet_Click" FontSize="16" Background="#FF842E2E" Foreground="White" BorderBrush="#FF5F5C5C" Margin="0,0,5,0"/>
+                <!--<TextBox Name="TxtB" Margin="5,0,0,0" FontSize="16" Width="75" TextChanged="TxtB_TextChanged" />-->
+            </StackPanel >
+            <DataGrid 
+                FontSize="16"
+                Name="AAA"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                VerticalScrollBarVisibility="Auto" Height="Auto" Width="894">
+                <DataGrid.Columns>
+                    <DataGridTextColumn                        
+                        Binding="{Binding Месяц.Месяцц}"                        
+                        Width="*"
+                        Header="Месяц"/>
+                    <DataGridTextColumn                        
+                        Binding="{Binding СправДек.НомерВТД}"                        
+                        Width="*"
+                        Header="ВТД №"/>
+                    <DataGridTextColumn                        
+                        Binding="{Binding КолТоннПоВТД.КоличествоТоннПоВТД}"                        
+                        Width="*"
+                        Header="Количество тонн по ВТД"/>
+                    <DataGridTextColumn                        
+                        Binding="{Binding КоличествоТоннОтгруженоПоНакладной.КолТоннПоНакладной}"                        
+                        Width="*"
+                        Header="Количество тонн отгружено по накладной"/>
+                    <DataGridTextColumn                        
+                        Binding="{Binding ОстатокПоВТД}"                        
+                        Width="*"
+                        Header="Остаток по ВТД"/>
+                    <DataGridTemplateColumn Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Изменить" Name="BtnSelectService" Click="BtnSelectService_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate >
+                    </DataGridTemplateColumn >
+                </DataGrid.Columns>
+            </DataGrid >
+        </StackPanel >
+    </StackPanel>
+</Page>

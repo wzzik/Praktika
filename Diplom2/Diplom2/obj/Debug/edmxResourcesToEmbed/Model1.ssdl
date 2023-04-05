@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище PraktikaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Анализ ВТД">
+    <Key>
+      <PropertyRef Name="Id_АнализВТД" />
+    </Key>
+    <Property Name="Id_АнализВТД" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Месяц" Type="int" Nullable="false" />
+    <Property Name="Id_ВТД" Type="int" />
+    <Property Name="Id_КолвоТоннПоВТД" Type="int" />
+    <Property Name="КоличествоТоннОтгруженоПоНакладнойй" Type="int" />
+    <Property Name="ОстатокПоВТД" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ВПД">
+    <Key>
+      <PropertyRef Name="Id_ВПД" />
+    </Key>
+    <Property Name="Id_ВПД" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Месяц3" Type="int" />
+    <Property Name="Id_АнализВТДд" Type="int" />
+    <Property Name="Id_ВТД" Type="int" />
+    <Property Name="Id_КолВоПоВТД" Type="int" />
+    <Property Name="ПТДномер" Type="nvarchar" MaxLength="50" />
+    <Property Name="КолВоТоннОтгруз" Type="int" />
+    <Property Name="КолПоПТДзакрыто" Type="nvarchar(max)" />
+    <Property Name="СтранаПоПТД" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Вывоз угля">
+    <Key>
+      <PropertyRef Name="Id_ВывозУгля" />
+    </Key>
+    <Property Name="Id_ВывозУгля" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Самовывоз" Type="int" Nullable="false" />
+    <Property Name="Сотрудник" Type="int" Nullable="false" />
+    <Property Name="Должность" Type="nvarchar" MaxLength="50" />
+    <Property Name="ДатаПриема" Type="date" Nullable="false" />
+    <Property Name="Грузополучатель" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Грузополучатель">
+    <Key>
+      <PropertyRef Name="Id_Грузополучатель" />
+    </Key>
+    <Property Name="Id_Грузополучатель" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Дата" Type="date" Nullable="false" />
+    <Property Name="Покупатель" Type="nvarchar" MaxLength="50" />
+    <Property Name="Грузополучатеель" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Декларация">
+    <Key>
+      <PropertyRef Name="Id_Декларация" />
+    </Key>
+    <Property Name="Id_Декларация" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Реестрр" Type="int" />
+    <Property Name="Странаа" Type="int" Nullable="false" />
+    <Property Name="Грузополучательь" Type="int" Nullable="false" />
+    <Property Name="ВПДД" Type="int" Nullable="false" />
+    <Property Name="ВТДД" Type="int" Nullable="false" />
+    <Property Name="Складыы" Type="int" Nullable="false" />
+    <Property Name="Контакт номер" Type="nvarchar" MaxLength="50" />
+    <Property Name="Контакт дата" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Качество">
+    <Key>
+      <PropertyRef Name="Id_Качество" />
+    </Key>
+    <Property Name="Id_Качество" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Качествоо" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="КоличествоТоннОтгруженоПоНакладной">
+    <Key>
+      <PropertyRef Name="Id_КолТоннПоНакладной" />
+    </Key>
+    <Property Name="Id_КолТоннПоНакладной" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КолТоннПоНакладной" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="КолТоннПоВТД">
+    <Key>
+      <PropertyRef Name="Id_КолТоннПоВТД" />
+    </Key>
+    <Property Name="Id_КолТоннПоВТД" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КоличествоТоннПоВТД" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="КонтрАгент">
+    <Key>
+      <PropertyRef Name="Id_КонтрАгент" />
+    </Key>
+    <Property Name="Id_КонтрАгент" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar(max)" />
+    <Property Name="НомерКонтракта" Type="nvarchar(max)" />
+    <Property Name="ДатаКонтракта" Type="nvarchar(max)" />
+    <Property Name="НомерЗаявки" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="МаркаУгля">
+    <Key>
+      <PropertyRef Name="Id_МаркаУгля" />
+    </Key>
+    <Property Name="Id_МаркаУгля" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Марка" Type="nvarchar(max)" />
+    <Property Name="Фракция" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Месяц">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Месяцц" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Месяц1">
+    <Key>
+      <PropertyRef Name="Id_месяц" />
+    </Key>
+    <Property Name="Id_месяц" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Месяц2" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Накладная">
+    <Key>
+      <PropertyRef Name="Id_Накладная" />
+    </Key>
+    <Property Name="Id_Накладная" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерКвитанции" Type="nvarchar(max)" />
+    <Property Name="Id_Отправ" Type="int" />
+    <Property Name="Id_КонтрАгента" Type="int" />
+    <Property Name="Id_СТАотправ" Type="int" />
+    <Property Name="Id_СТАназнач" Type="int" />
+    <Property Name="Id_МаркаУгляя" Type="int" />
+    <Property Name="НомерВагона" Type="nvarchar(max)" />
+    <Property Name="Упаковка" Type="nvarchar(max)" />
+    <Property Name="НомерЗаявки" Type="nvarchar(max)" />
+    <Property Name="Id_Деклараций" Type="int" />
+  </EntityType>
+  <EntityType Name="НаКолесах">
+    <Key>
+      <PropertyRef Name="Id_СкладНаКолесах" />
+    </Key>
+    <Property Name="Id_СкладНаКолесах" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Склад" Type="int" />
+    <Property Name="НачальныйОстаток" Type="nvarchar" MaxLength="50" />
+    <Property Name="Приход" Type="nvarchar" MaxLength="50" />
+    <Property Name="Расход" Type="nvarchar" MaxLength="50" />
+    <Property Name="КонечныйОстаток" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Остатки на складе">
+    <Key>
+      <PropertyRef Name="Id_ОстаткиНаСкладе" />
+    </Key>
+    <Property Name="Id_ОстаткиНаСкладе" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Склад" Type="nvarchar" MaxLength="50" />
+    <Property Name="НачальныйОстаток" Type="nvarchar" MaxLength="50" />
+    <Property Name="Приход" Type="nvarchar" MaxLength="50" />
+    <Property Name="Расход" Type="nvarchar" MaxLength="50" />
+    <Property Name="КонечныйОстаток" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ОстатокПоВТДд">
+    <Key>
+      <PropertyRef Name="Id_ОстПоВТДд" />
+    </Key>
+    <Property Name="Id_ОстПоВТДд" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ОстатокПоВТДД" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Отправитель">
+    <Key>
+      <PropertyRef Name="Id_Отправитель" />
+    </Key>
+    <Property Name="Id_Отправитель" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименованиее" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Отчет по складам">
+    <Key>
+      <PropertyRef Name="Id_ОтчетПоСкладам" />
+    </Key>
+    <Property Name="Id_ОтчетПоСкладам" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерСклада" Type="int" Nullable="false" />
+    <Property Name="ИмяСклада" Type="nvarchar" MaxLength="50" />
+    <Property Name="ВместимостьСклада" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Подразделения">
+    <Key>
+      <PropertyRef Name="Id_Подразделение" />
+    </Key>
+    <Property Name="Id_Подразделение" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Приходование материалов">
+    <Key>
+      <PropertyRef Name="Id_ПриходованиеМатериала" />
+    </Key>
+    <Property Name="Id_ПриходованиеМатериала" Type="int" Nullable="false" />
+    <Property Name="Дата" Type="nvarchar" MaxLength="50" />
+    <Property Name="Номер" Type="nvarchar" MaxLength="50" />
+    <Property Name="Сумма" Type="nvarchar" MaxLength="50" />
+    <Property Name="Склад" Type="nvarchar" MaxLength="50" />
+    <Property Name="Организация" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Професия">
+    <Key>
+      <PropertyRef Name="Id_Профессий" />
+    </Key>
+    <Property Name="Id_Профессий" Type="int" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id_Участок" Type="int" />
+    <Property Name="Должность" Type="nvarchar" MaxLength="50" />
+    <Property Name="Оклад" Type="nvarchar" MaxLength="50" />
+    <Property Name="Статус" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Работники">
+    <Key>
+      <PropertyRef Name="Id_Работник" />
+    </Key>
+    <Property Name="Id_Работник" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ТабельныйНомер" Type="nvarchar" MaxLength="50" />
+    <Property Name="ФИО" Type="nvarchar" MaxLength="50" />
+    <Property Name="ПаспортныеДанные" Type="nvarchar" MaxLength="50" />
+    <Property Name="ДатаРождения" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Реестр">
+    <Key>
+      <PropertyRef Name="Id_Реестр" />
+    </Key>
+    <Property Name="Id_Реестр" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="СоставНетто" Type="nvarchar" MaxLength="50" />
+    <Property Name="СоставГрузоподьемности" Type="nvarchar" MaxLength="50" />
+    <Property Name="КачествоТовара" Type="int" Nullable="false" />
+    <Property Name="СрокДоставки" Type="nvarchar" MaxLength="50" />
+    <Property Name="Дата" Type="nvarchar" MaxLength="50" />
+    <Property Name="КолПВ" Type="nvarchar" MaxLength="50" />
+    <Property Name="КолТонн" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Самовывоз">
+    <Key>
+      <PropertyRef Name="Id_Самовывоз" />
+    </Key>
+    <Property Name="Id_Самовывоз" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Сотрудник" Type="nvarchar" MaxLength="50" />
+    <Property Name="Организация" Type="nvarchar" MaxLength="50" />
+    <Property Name="Дата" Type="nvarchar" MaxLength="50" />
+    <Property Name="Номер" Type="nvarchar" MaxLength="50" />
+    <Property Name="ВыдачаТалона" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="СправДек">
+    <Key>
+      <PropertyRef Name="Id_Деклараций" />
+    </Key>
+    <Property Name="Id_Деклараций" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НомерВТД" Type="nvarchar(max)" />
+    <Property Name="Тонн" Type="nvarchar(max)" />
+    <Property Name="Марка" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="СправкаВТД">
+    <Key>
+      <PropertyRef Name="Id_СправкаВТД" />
+    </Key>
+    <Property Name="Id_СправкаВТД" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Декларация№" Type="nvarchar" MaxLength="50" />
+    <Property Name="МаркаУгля" Type="nvarchar" MaxLength="50" />
+    <Property Name="Вес" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Станция">
+    <Key>
+      <PropertyRef Name="Id_СТ" />
+    </Key>
+    <Property Name="Id_СТ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодСтанции" Type="nvarchar(max)" />
+    <Property Name="Станцияя" Type="nvarchar(max)" />
+    <Property Name="Дорога" Type="nvarchar(max)" />
+    <Property Name="СокрНазвание" Type="nvarchar(max)" />
+    <Property Name="Страна" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Станция2">
+    <Key>
+      <PropertyRef Name="Id_СТТ" />
+    </Key>
+    <Property Name="Id_СТТ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="КодСтанциии" Type="nvarchar(max)" />
+    <Property Name="Станцияяя" Type="nvarchar(max)" />
+    <Property Name="Дорога" Type="nvarchar(max)" />
+    <Property Name="СокрНазвание" Type="nvarchar(max)" />
+    <Property Name="Страна" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="СтанцияОтправления">
+    <Key>
+      <PropertyRef Name="Id_СтанцияОправления" />
+    </Key>
+    <Property Name="Id_СтанцияОправления" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Страна">
+    <Key>
+      <PropertyRef Name="Id_Страны" />
+    </Key>
+    <Property Name="Id_Страны" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НазваниеСтраны" Type="nvarchar" MaxLength="50" />
+    <Property Name="НазваниеЖДстанции" Type="nvarchar" MaxLength="50" />
+    <Property Name="НаправлениеЖД" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Страна1">
+    <Key>
+      <PropertyRef Name="Id_Страна1" />
+    </Key>
+    <Property Name="Id_Страна1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Страна2" Type="nvarchar" MaxLength="50" />
+    <Property Name="НаименованиеЖДстанции" Type="nvarchar" MaxLength="50" />
+    <Property Name="НаправлениеЖД" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Страна2">
+    <Key>
+      <PropertyRef Name="Id_Страны" />
+    </Key>
+    <Property Name="Id_Страны" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НазваниеСтраны" Type="nvarchar" MaxLength="50" />
+    <Property Name="НазваниеЖДстанции" Type="nvarchar" MaxLength="50" />
+    <Property Name="НаправлениеЖД" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Страны">
+    <Key>
+      <PropertyRef Name="Id_Страны" />
+    </Key>
+    <Property Name="Id_Страны" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="СтранаП" Type="nvarchar(max)" />
+    <Property Name="ПолноеНаименование" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Участки">
+    <Key>
+      <PropertyRef Name="Id_Участок" />
+    </Key>
+    <Property Name="Id_Участок" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="НаименованиеУчастка" Type="nvarchar" MaxLength="50" />
+    <Property Name="Подразделение" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Анализ ВТД_КоличествоТоннОтгруженоПоНакладной">
+    <End Role="КоличествоТоннОтгруженоПоНакладной" Type="Self.КоличествоТоннОтгруженоПоНакладной" Multiplicity="0..1" />
+    <End Role="Анализ ВТД" Type="Self.Анализ ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КоличествоТоннОтгруженоПоНакладной">
+        <PropertyRef Name="Id_КолТоннПоНакладной" />
+      </Principal>
+      <Dependent Role="Анализ ВТД">
+        <PropertyRef Name="КоличествоТоннОтгруженоПоНакладнойй" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Анализ ВТД_КолТоннПоВТД">
+    <End Role="КолТоннПоВТД" Type="Self.КолТоннПоВТД" Multiplicity="0..1" />
+    <End Role="Анализ ВТД" Type="Self.Анализ ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КолТоннПоВТД">
+        <PropertyRef Name="Id_КолТоннПоВТД" />
+      </Principal>
+      <Dependent Role="Анализ ВТД">
+        <PropertyRef Name="Id_КолвоТоннПоВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Анализ ВТД_Месяц">
+    <End Role="Месяц" Type="Self.Месяц" Multiplicity="1" />
+    <End Role="Анализ ВТД" Type="Self.Анализ ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Месяц">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Анализ ВТД">
+        <PropertyRef Name="Id_Месяц" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Анализ ВТД_СправДек">
+    <End Role="СправДек" Type="Self.СправДек" Multiplicity="0..1" />
+    <End Role="Анализ ВТД" Type="Self.Анализ ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СправДек">
+        <PropertyRef Name="Id_Деклараций" />
+      </Principal>
+      <Dependent Role="Анализ ВТД">
+        <PropertyRef Name="Id_ВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_КоличествоТоннОтгруженоПоНакладной">
+    <End Role="КоличествоТоннОтгруженоПоНакладной" Type="Self.КоличествоТоннОтгруженоПоНакладной" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КоличествоТоннОтгруженоПоНакладной">
+        <PropertyRef Name="Id_КолТоннПоНакладной" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="КолВоТоннОтгруз" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_КолТоннПоВТД">
+    <End Role="КолТоннПоВТД" Type="Self.КолТоннПоВТД" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КолТоннПоВТД">
+        <PropertyRef Name="Id_КолТоннПоВТД" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="Id_КолВоПоВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_Месяц1">
+    <End Role="Месяц1" Type="Self.Месяц1" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Месяц1">
+        <PropertyRef Name="Id_месяц" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="Id_Месяц3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_СправДек">
+    <End Role="СправДек" Type="Self.СправДек" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СправДек">
+        <PropertyRef Name="Id_Деклараций" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="Id_ВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_Страны">
+    <End Role="Страны" Type="Self.Страны" Multiplicity="1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Страны">
+        <PropertyRef Name="Id_Страны" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="СтранаПоПТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз угля_Грузополучатель1">
+    <End Role="Грузополучатель" Type="Self.Грузополучатель" Multiplicity="1" />
+    <End Role="Вывоз угля" Type="Self.Вывоз угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Грузополучатель">
+        <PropertyRef Name="Id_Грузополучатель" />
+      </Principal>
+      <Dependent Role="Вывоз угля">
+        <PropertyRef Name="Грузополучатель" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз угля_Професия">
+    <End Role="Професия" Type="Self.Професия" Multiplicity="1" />
+    <End Role="Вывоз угля" Type="Self.Вывоз угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Професия">
+        <PropertyRef Name="Id_Профессий" />
+      </Principal>
+      <Dependent Role="Вывоз угля">
+        <PropertyRef Name="Сотрудник" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз угля_Работники">
+    <End Role="Работники" Type="Self.Работники" Multiplicity="1" />
+    <End Role="Вывоз угля" Type="Self.Вывоз угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Работники">
+        <PropertyRef Name="Id_Работник" />
+      </Principal>
+      <Dependent Role="Вывоз угля">
+        <PropertyRef Name="Сотрудник" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз угля_Самовывоз">
+    <End Role="Самовывоз" Type="Self.Самовывоз" Multiplicity="1" />
+    <End Role="Вывоз угля" Type="Self.Вывоз угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Самовывоз">
+        <PropertyRef Name="Id_Самовывоз" />
+      </Principal>
+      <Dependent Role="Вывоз угля">
+        <PropertyRef Name="Самовывоз" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Грузополучатель">
+    <End Role="Грузополучатель" Type="Self.Грузополучатель" Multiplicity="1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Грузополучатель">
+        <PropertyRef Name="Id_Грузополучатель" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Грузополучательь" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Отчет по складам">
+    <End Role="Отчет по складам" Type="Self.Отчет по складам" Multiplicity="1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Отчет по складам">
+        <PropertyRef Name="Id_ОтчетПоСкладам" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Складыы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Реестр">
+    <End Role="Реестр" Type="Self.Реестр" Multiplicity="0..1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Реестр">
+        <PropertyRef Name="Id_Реестр" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Реестрр" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Страна">
+    <End Role="Страна" Type="Self.Страна" Multiplicity="1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Страна">
+        <PropertyRef Name="Id_Страны" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Странаа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_КонтрАгент">
+    <End Role="КонтрАгент" Type="Self.КонтрАгент" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КонтрАгент">
+        <PropertyRef Name="Id_КонтрАгент" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_КонтрАгента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_МаркаУгля">
+    <End Role="МаркаУгля" Type="Self.МаркаУгля" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="МаркаУгля">
+        <PropertyRef Name="Id_МаркаУгля" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_МаркаУгляя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_Отправитель">
+    <End Role="Отправитель" Type="Self.Отправитель" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Отправитель">
+        <PropertyRef Name="Id_Отправитель" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_Отправ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_СправДек">
+    <End Role="СправДек" Type="Self.СправДек" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СправДек">
+        <PropertyRef Name="Id_Деклараций" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_Деклараций" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_Станция">
+    <End Role="Станция" Type="Self.Станция" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Станция">
+        <PropertyRef Name="Id_СТ" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_СТАотправ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_Станция21">
+    <End Role="Станция2" Type="Self.Станция2" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Станция2">
+        <PropertyRef Name="Id_СТТ" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_СТАназнач" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Професия_Участки">
+    <End Role="Участки" Type="Self.Участки" Multiplicity="0..1" />
+    <End Role="Професия" Type="Self.Професия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Участки">
+        <PropertyRef Name="Id_Участок" />
+      </Principal>
+      <Dependent Role="Професия">
+        <PropertyRef Name="Id_Участок" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Реестр_Качество">
+    <End Role="Качество" Type="Self.Качество" Multiplicity="1" />
+    <End Role="Реестр" Type="Self.Реестр" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Качество">
+        <PropertyRef Name="Id_Качество" />
+      </Principal>
+      <Dependent Role="Реестр">
+        <PropertyRef Name="КачествоТовара" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Участки_Подразделения">
+    <End Role="Подразделения" Type="Self.Подразделения" Multiplicity="1" />
+    <End Role="Участки" Type="Self.Участки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Подразделения">
+        <PropertyRef Name="Id_Подразделение" />
+      </Principal>
+      <Dependent Role="Участки">
+        <PropertyRef Name="Подразделение" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище PraktikaModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Анализ ВТД" EntityType="Self.Анализ ВТД" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ВПД" EntityType="Self.ВПД" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Вывоз угля" EntityType="Self.Вывоз угля" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Грузополучатель" EntityType="Self.Грузополучатель" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Декларация" EntityType="Self.Декларация" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Качество" EntityType="Self.Качество" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="КоличествоТоннОтгруженоПоНакладной" EntityType="Self.КоличествоТоннОтгруженоПоНакладной" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="КолТоннПоВТД" EntityType="Self.КолТоннПоВТД" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="КонтрАгент" EntityType="Self.КонтрАгент" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="МаркаУгля" EntityType="Self.МаркаУгля" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Месяц" EntityType="Self.Месяц" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Месяц1" EntityType="Self.Месяц1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Накладная" EntityType="Self.Накладная" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="НаКолесах" EntityType="Self.НаКолесах" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Остатки на складе" EntityType="Self.Остатки на складе" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ОстатокПоВТДд" EntityType="Self.ОстатокПоВТДд" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Отправитель" EntityType="Self.Отправитель" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Отчет по складам" EntityType="Self.Отчет по складам" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Подразделения" EntityType="Self.Подразделения" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Приходование материалов" EntityType="Self.Приходование материалов" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Професия" EntityType="Self.Професия" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Работники" EntityType="Self.Работники" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Реестр" EntityType="Self.Реестр" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Самовывоз" EntityType="Self.Самовывоз" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="СправДек" EntityType="Self.СправДек" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="СправкаВТД" EntityType="Self.СправкаВТД" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Станция" EntityType="Self.Станция" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Станция2" EntityType="Self.Станция2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="СтанцияОтправления" EntityType="Self.СтанцияОтправления" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Страна" EntityType="Self.Страна" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Страна1" EntityType="Self.Страна1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Страна2" EntityType="Self.Страна2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Страны" EntityType="Self.Страны" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Участки" EntityType="Self.Участки" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Анализ ВТД_КоличествоТоннОтгруженоПоНакладной" Association="Self.FK_Анализ ВТД_КоличествоТоннОтгруженоПоНакладной">
+      <End Role="КоличествоТоннОтгруженоПоНакладной" EntitySet="КоличествоТоннОтгруженоПоНакладной" />
+      <End Role="Анализ ВТД" EntitySet="Анализ ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Анализ ВТД_КолТоннПоВТД" Association="Self.FK_Анализ ВТД_КолТоннПоВТД">
+      <End Role="КолТоннПоВТД" EntitySet="КолТоннПоВТД" />
+      <End Role="Анализ ВТД" EntitySet="Анализ ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Анализ ВТД_Месяц" Association="Self.FK_Анализ ВТД_Месяц">
+      <End Role="Месяц" EntitySet="Месяц" />
+      <End Role="Анализ ВТД" EntitySet="Анализ ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Анализ ВТД_СправДек" Association="Self.FK_Анализ ВТД_СправДек">
+      <End Role="СправДек" EntitySet="СправДек" />
+      <End Role="Анализ ВТД" EntitySet="Анализ ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_КоличествоТоннОтгруженоПоНакладной" Association="Self.FK_ВПД_КоличествоТоннОтгруженоПоНакладной">
+      <End Role="КоличествоТоннОтгруженоПоНакладной" EntitySet="КоличествоТоннОтгруженоПоНакладной" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_КолТоннПоВТД" Association="Self.FK_ВПД_КолТоннПоВТД">
+      <End Role="КолТоннПоВТД" EntitySet="КолТоннПоВТД" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_Месяц1" Association="Self.FK_ВПД_Месяц1">
+      <End Role="Месяц1" EntitySet="Месяц1" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_СправДек" Association="Self.FK_ВПД_СправДек">
+      <End Role="СправДек" EntitySet="СправДек" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_Страны" Association="Self.FK_ВПД_Страны">
+      <End Role="Страны" EntitySet="Страны" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз угля_Грузополучатель1" Association="Self.FK_Вывоз угля_Грузополучатель1">
+      <End Role="Грузополучатель" EntitySet="Грузополучатель" />
+      <End Role="Вывоз угля" EntitySet="Вывоз угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз угля_Професия" Association="Self.FK_Вывоз угля_Професия">
+      <End Role="Професия" EntitySet="Професия" />
+      <End Role="Вывоз угля" EntitySet="Вывоз угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз угля_Работники" Association="Self.FK_Вывоз угля_Работники">
+      <End Role="Работники" EntitySet="Работники" />
+      <End Role="Вывоз угля" EntitySet="Вывоз угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз угля_Самовывоз" Association="Self.FK_Вывоз угля_Самовывоз">
+      <End Role="Самовывоз" EntitySet="Самовывоз" />
+      <End Role="Вывоз угля" EntitySet="Вывоз угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Грузополучатель" Association="Self.FK_Декларация_Грузополучатель">
+      <End Role="Грузополучатель" EntitySet="Грузополучатель" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Отчет по складам" Association="Self.FK_Декларация_Отчет по складам">
+      <End Role="Отчет по складам" EntitySet="Отчет по складам" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Реестр" Association="Self.FK_Декларация_Реестр">
+      <End Role="Реестр" EntitySet="Реестр" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Страна" Association="Self.FK_Декларация_Страна">
+      <End Role="Страна" EntitySet="Страна" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_КонтрАгент" Association="Self.FK_Накладная_КонтрАгент">
+      <End Role="КонтрАгент" EntitySet="КонтрАгент" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_МаркаУгля" Association="Self.FK_Накладная_МаркаУгля">
+      <End Role="МаркаУгля" EntitySet="МаркаУгля" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_Отправитель" Association="Self.FK_Накладная_Отправитель">
+      <End Role="Отправитель" EntitySet="Отправитель" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_СправДек" Association="Self.FK_Накладная_СправДек">
+      <End Role="СправДек" EntitySet="СправДек" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_Станция" Association="Self.FK_Накладная_Станция">
+      <End Role="Станция" EntitySet="Станция" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_Станция21" Association="Self.FK_Накладная_Станция21">
+      <End Role="Станция2" EntitySet="Станция2" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Професия_Участки" Association="Self.FK_Професия_Участки">
+      <End Role="Участки" EntitySet="Участки" />
+      <End Role="Професия" EntitySet="Професия" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Реестр_Качество" Association="Self.FK_Реестр_Качество">
+      <End Role="Качество" EntitySet="Качество" />
+      <End Role="Реестр" EntitySet="Реестр" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Участки_Подразделения" Association="Self.FK_Участки_Подразделения">
+      <End Role="Подразделения" EntitySet="Подразделения" />
+      <End Role="Участки" EntitySet="Участки" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

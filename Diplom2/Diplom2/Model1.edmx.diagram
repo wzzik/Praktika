@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2ded6128c664be5998ac5c49018cb57" Name="Diagram1">
+        <EntityTypeShape EntityType="PraktikaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Анализ_ВТД" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.ВПД" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Вывоз_угля" Width="1.5" PointX="11" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Грузополучатель" Width="1.5" PointX="8.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Декларация" Width="1.5" PointX="14" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Качество" Width="1.5" PointX="9.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.КоличествоТоннОтгруженоПоНакладной" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.КолТоннПоВТД" Width="1.5" PointX="0.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.КонтрАгент" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.МаркаУгля" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Месяц" Width="1.5" PointX="0.75" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Месяц1" Width="1.5" PointX="3.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Накладная" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.НаКолесах" Width="1.5" PointX="8.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Остатки_на_складе" Width="1.5" PointX="5.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.ОстатокПоВТДд" Width="1.5" PointX="10.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Отправитель" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Отчет_по_складам" Width="1.5" PointX="11.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Подразделения" Width="1.5" PointX="4.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Приходование_материалов" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Професия" Width="1.5" PointX="8.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Работники" Width="1.5" PointX="8.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Реестр" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Самовывоз" Width="1.5" PointX="8.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.СправДек" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.СправкаВТД" Width="1.5" PointX="5.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Станция" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Станция2" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.СтанцияОтправления" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Страна" Width="1.5" PointX="11.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Страна1" Width="1.5" PointX="13.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Страна2" Width="1.5" PointX="13.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Страны" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PraktikaModel.Участки" Width="1.5" PointX="6.5" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="PraktikaModel.FK_Анализ_ВТД_КоличествоТоннОтгруженоПоНакладной" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Анализ_ВТД_КолТоннПоВТД" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Анализ_ВТД_Месяц" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Анализ_ВТД_СправДек" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_ВПД_КоличествоТоннОтгруженоПоНакладной" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_ВПД_КолТоннПоВТД" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_ВПД_Месяц1" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_ВПД_СправДек" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_ВПД_Страны" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Вывоз_угля_Грузополучатель1" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Вывоз_угля_Професия" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Вывоз_угля_Работники" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Вывоз_угля_Самовывоз" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Декларация_Грузополучатель" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Декларация_Отчет_по_складам" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Декларация_Реестр" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Декларация_Страна" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Реестр_Качество" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Накладная_КонтрАгент" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Накладная_МаркаУгля" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Накладная_Отправитель" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Накладная_СправДек" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Накладная_Станция" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Накладная_Станция21" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Участки_Подразделения" ManuallyRouted="false" />
+        <AssociationConnector Association="PraktikaModel.FK_Професия_Участки" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

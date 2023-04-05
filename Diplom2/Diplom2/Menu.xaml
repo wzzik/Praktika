@@ -1,0 +1,24 @@
+﻿<Page x:Class="Diplom2.Menu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1050"
+      Title="Menu" Background="AliceBlue">
+
+    <StackPanel Background="#FF842E2E" >
+        <StackPanel Width="800" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Image Source="/изображение_2023-03-16_120311668.png" Width="418" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </StackPanel >
+        <StackPanel Height="275" Width="250" Margin="0,35,0,0" >
+            <Button Content="Отчет по остаткам ВТД" Margin="0,10,0,10" Width="240" Height="35" FontSize="20" Click="Button_Click_2" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+            <Button Content="Отчет по закрытию ВТД" Width="240" Height="35" FontSize="20" Click="Button_Click_3" Margin="0,0,0,10" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+            <Button Content="Реестр" Width="240" FontSize="20" Height="35" Click="Button_Click" Margin="0,0,0,10" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E" Visibility="Collapsed"/>
+            <Button Content="Декларация" Width="240" FontSize="20" Height="35" Click="Button_Click_4" Margin="0,0,0,10" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E" Visibility="Collapsed"/>
+            <Button Content="Накладная" Width="240" FontSize="20" Height="35" Click="Button_Click_5" Margin="0,0,0,10" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+            <Button Content="Справочник" Width="240" FontSize="20" Height="35" Click="Button_Click_1" Background="#FF5F5C5C" Foreground="White" BorderBrush="#FF842E2E"/>
+        </StackPanel>
+    </StackPanel >
+</Page>

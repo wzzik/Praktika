@@ -1,0 +1,843 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PraktikaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Анализ_ВТД">
+    <Key>
+      <PropertyRef Name="Id_АнализВТД" />
+    </Key>
+    <Property Name="Id_АнализВТД" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Месяц" Type="Int32" Nullable="false" />
+    <Property Name="Id_ВТД" Type="Int32" />
+    <Property Name="Id_КолвоТоннПоВТД" Type="Int32" />
+    <Property Name="КоличествоТоннОтгруженоПоНакладнойй" Type="Int32" />
+    <Property Name="ОстатокПоВТД" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="КоличествоТоннОтгруженоПоНакладной" Relationship="Self.FK_Анализ_ВТД_КоличествоТоннОтгруженоПоНакладной" FromRole="Анализ_ВТД" ToRole="КоличествоТоннОтгруженоПоНакладной" />
+    <NavigationProperty Name="КолТоннПоВТД" Relationship="Self.FK_Анализ_ВТД_КолТоннПоВТД" FromRole="Анализ_ВТД" ToRole="КолТоннПоВТД" />
+    <NavigationProperty Name="Месяц" Relationship="Self.FK_Анализ_ВТД_Месяц" FromRole="Анализ_ВТД" ToRole="Месяц" />
+    <NavigationProperty Name="СправДек" Relationship="Self.FK_Анализ_ВТД_СправДек" FromRole="Анализ_ВТД" ToRole="СправДек" />
+  </EntityType>
+  <EntityType Name="ВПД">
+    <Key>
+      <PropertyRef Name="Id_ВПД" />
+    </Key>
+    <Property Name="Id_ВПД" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Месяц3" Type="Int32" />
+    <Property Name="Id_АнализВТДд" Type="Int32" />
+    <Property Name="Id_ВТД" Type="Int32" />
+    <Property Name="Id_КолВоПоВТД" Type="Int32" />
+    <Property Name="ПТДномер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КолВоТоннОтгруз" Type="Int32" />
+    <Property Name="КолПоПТДзакрыто" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="СтранаПоПТД" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="КоличествоТоннОтгруженоПоНакладной" Relationship="Self.FK_ВПД_КоличествоТоннОтгруженоПоНакладной" FromRole="ВПД" ToRole="КоличествоТоннОтгруженоПоНакладной" />
+    <NavigationProperty Name="КолТоннПоВТД" Relationship="Self.FK_ВПД_КолТоннПоВТД" FromRole="ВПД" ToRole="КолТоннПоВТД" />
+    <NavigationProperty Name="Месяц1" Relationship="Self.FK_ВПД_Месяц1" FromRole="ВПД" ToRole="Месяц1" />
+    <NavigationProperty Name="СправДек" Relationship="Self.FK_ВПД_СправДек" FromRole="ВПД" ToRole="СправДек" />
+    <NavigationProperty Name="Страны" Relationship="Self.FK_ВПД_Страны" FromRole="ВПД" ToRole="Страны" />
+  </EntityType>
+  <EntityType Name="Вывоз_угля">
+    <Key>
+      <PropertyRef Name="Id_ВывозУгля" />
+    </Key>
+    <Property Name="Id_ВывозУгля" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Самовывоз" Type="Int32" Nullable="false" />
+    <Property Name="Сотрудник" Type="Int32" Nullable="false" />
+    <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ДатаПриема" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Грузополучатель" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Грузополучатель1" Relationship="Self.FK_Вывоз_угля_Грузополучатель1" FromRole="Вывоз_угля" ToRole="Грузополучатель" />
+    <NavigationProperty Name="Професия" Relationship="Self.FK_Вывоз_угля_Професия" FromRole="Вывоз_угля" ToRole="Професия" />
+    <NavigationProperty Name="Работники" Relationship="Self.FK_Вывоз_угля_Работники" FromRole="Вывоз_угля" ToRole="Работники" />
+    <NavigationProperty Name="Самовывоз1" Relationship="Self.FK_Вывоз_угля_Самовывоз" FromRole="Вывоз_угля" ToRole="Самовывоз" />
+  </EntityType>
+  <EntityType Name="Грузополучатель">
+    <Key>
+      <PropertyRef Name="Id_Грузополучатель" />
+    </Key>
+    <Property Name="Id_Грузополучатель" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Покупатель" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Грузополучатеель" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Вывоз_угля" Relationship="Self.FK_Вывоз_угля_Грузополучатель1" FromRole="Грузополучатель" ToRole="Вывоз_угля" />
+    <NavigationProperty Name="Декларация" Relationship="Self.FK_Декларация_Грузополучатель" FromRole="Грузополучатель" ToRole="Декларация" />
+  </EntityType>
+  <EntityType Name="Декларация">
+    <Key>
+      <PropertyRef Name="Id_Декларация" />
+    </Key>
+    <Property Name="Id_Декларация" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Реестрр" Type="Int32" />
+    <Property Name="Странаа" Type="Int32" Nullable="false" />
+    <Property Name="Грузополучательь" Type="Int32" Nullable="false" />
+    <Property Name="ВПДД" Type="Int32" Nullable="false" />
+    <Property Name="ВТДД" Type="Int32" Nullable="false" />
+    <Property Name="Складыы" Type="Int32" Nullable="false" />
+    <Property Name="Контакт_номер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Контакт_дата" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Грузополучатель" Relationship="Self.FK_Декларация_Грузополучатель" FromRole="Декларация" ToRole="Грузополучатель" />
+    <NavigationProperty Name="Отчет_по_складам" Relationship="Self.FK_Декларация_Отчет_по_складам" FromRole="Декларация" ToRole="Отчет_по_складам" />
+    <NavigationProperty Name="Реестр" Relationship="Self.FK_Декларация_Реестр" FromRole="Декларация" ToRole="Реестр" />
+    <NavigationProperty Name="Страна" Relationship="Self.FK_Декларация_Страна" FromRole="Декларация" ToRole="Страна" />
+  </EntityType>
+  <EntityType Name="Качество">
+    <Key>
+      <PropertyRef Name="Id_Качество" />
+    </Key>
+    <Property Name="Id_Качество" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Качествоо" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Реестр" Relationship="Self.FK_Реестр_Качество" FromRole="Качество" ToRole="Реестр" />
+  </EntityType>
+  <EntityType Name="КоличествоТоннОтгруженоПоНакладной">
+    <Key>
+      <PropertyRef Name="Id_КолТоннПоНакладной" />
+    </Key>
+    <Property Name="Id_КолТоннПоНакладной" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КолТоннПоНакладной" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Анализ_ВТД" Relationship="Self.FK_Анализ_ВТД_КоличествоТоннОтгруженоПоНакладной" FromRole="КоличествоТоннОтгруженоПоНакладной" ToRole="Анализ_ВТД" />
+    <NavigationProperty Name="ВПД" Relationship="Self.FK_ВПД_КоличествоТоннОтгруженоПоНакладной" FromRole="КоличествоТоннОтгруженоПоНакладной" ToRole="ВПД" />
+  </EntityType>
+  <EntityType Name="КолТоннПоВТД">
+    <Key>
+      <PropertyRef Name="Id_КолТоннПоВТД" />
+    </Key>
+    <Property Name="Id_КолТоннПоВТД" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КоличествоТоннПоВТД" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Анализ_ВТД" Relationship="Self.FK_Анализ_ВТД_КолТоннПоВТД" FromRole="КолТоннПоВТД" ToRole="Анализ_ВТД" />
+    <NavigationProperty Name="ВПД" Relationship="Self.FK_ВПД_КолТоннПоВТД" FromRole="КолТоннПоВТД" ToRole="ВПД" />
+  </EntityType>
+  <EntityType Name="КонтрАгент">
+    <Key>
+      <PropertyRef Name="Id_КонтрАгент" />
+    </Key>
+    <Property Name="Id_КонтрАгент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="НомерКонтракта" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ДатаКонтракта" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="НомерЗаявки" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Накладная" Relationship="Self.FK_Накладная_КонтрАгент" FromRole="КонтрАгент" ToRole="Накладная" />
+  </EntityType>
+  <EntityType Name="МаркаУгля">
+    <Key>
+      <PropertyRef Name="Id_МаркаУгля" />
+    </Key>
+    <Property Name="Id_МаркаУгля" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Марка" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Фракция" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Накладная" Relationship="Self.FK_Накладная_МаркаУгля" FromRole="МаркаУгля" ToRole="Накладная" />
+  </EntityType>
+  <EntityType Name="Месяц">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Месяцц" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Анализ_ВТД" Relationship="Self.FK_Анализ_ВТД_Месяц" FromRole="Месяц" ToRole="Анализ_ВТД" />
+  </EntityType>
+  <EntityType Name="Месяц1">
+    <Key>
+      <PropertyRef Name="Id_месяц" />
+    </Key>
+    <Property Name="Id_месяц" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Месяц2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ВПД" Relationship="Self.FK_ВПД_Месяц1" FromRole="Месяц1" ToRole="ВПД" />
+  </EntityType>
+  <EntityType Name="Накладная">
+    <Key>
+      <PropertyRef Name="Id_Накладная" />
+    </Key>
+    <Property Name="Id_Накладная" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НомерКвитанции" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Отправ" Type="Int32" />
+    <Property Name="Id_КонтрАгента" Type="Int32" />
+    <Property Name="Id_СТАотправ" Type="Int32" />
+    <Property Name="Id_СТАназнач" Type="Int32" />
+    <Property Name="Id_МаркаУгляя" Type="Int32" />
+    <Property Name="НомерВагона" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Упаковка" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="НомерЗаявки" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Деклараций" Type="Int32" />
+    <NavigationProperty Name="КонтрАгент" Relationship="Self.FK_Накладная_КонтрАгент" FromRole="Накладная" ToRole="КонтрАгент" />
+    <NavigationProperty Name="МаркаУгля" Relationship="Self.FK_Накладная_МаркаУгля" FromRole="Накладная" ToRole="МаркаУгля" />
+    <NavigationProperty Name="Отправитель" Relationship="Self.FK_Накладная_Отправитель" FromRole="Накладная" ToRole="Отправитель" />
+    <NavigationProperty Name="СправДек" Relationship="Self.FK_Накладная_СправДек" FromRole="Накладная" ToRole="СправДек" />
+    <NavigationProperty Name="Станция" Relationship="Self.FK_Накладная_Станция" FromRole="Накладная" ToRole="Станция" />
+    <NavigationProperty Name="Станция2" Relationship="Self.FK_Накладная_Станция21" FromRole="Накладная" ToRole="Станция2" />
+  </EntityType>
+  <EntityType Name="НаКолесах">
+    <Key>
+      <PropertyRef Name="Id_СкладНаКолесах" />
+    </Key>
+    <Property Name="Id_СкладНаКолесах" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Склад" Type="Int32" />
+    <Property Name="НачальныйОстаток" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Приход" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Расход" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КонечныйОстаток" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Остатки_на_складе">
+    <Key>
+      <PropertyRef Name="Id_ОстаткиНаСкладе" />
+    </Key>
+    <Property Name="Id_ОстаткиНаСкладе" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Склад" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НачальныйОстаток" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Приход" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Расход" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КонечныйОстаток" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ОстатокПоВТДд">
+    <Key>
+      <PropertyRef Name="Id_ОстПоВТДд" />
+    </Key>
+    <Property Name="Id_ОстПоВТДд" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ОстатокПоВТДД1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Отправитель">
+    <Key>
+      <PropertyRef Name="Id_Отправитель" />
+    </Key>
+    <Property Name="Id_Отправитель" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименованиее" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Накладная" Relationship="Self.FK_Накладная_Отправитель" FromRole="Отправитель" ToRole="Накладная" />
+  </EntityType>
+  <EntityType Name="Отчет_по_складам">
+    <Key>
+      <PropertyRef Name="Id_ОтчетПоСкладам" />
+    </Key>
+    <Property Name="Id_ОтчетПоСкладам" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НомерСклада" Type="Int32" Nullable="false" />
+    <Property Name="ИмяСклада" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ВместимостьСклада" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Декларация" Relationship="Self.FK_Декларация_Отчет_по_складам" FromRole="Отчет_по_складам" ToRole="Декларация" />
+  </EntityType>
+  <EntityType Name="Подразделения">
+    <Key>
+      <PropertyRef Name="Id_Подразделение" />
+    </Key>
+    <Property Name="Id_Подразделение" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Участки" Relationship="Self.FK_Участки_Подразделения" FromRole="Подразделения" ToRole="Участки" />
+  </EntityType>
+  <EntityType Name="Приходование_материалов">
+    <Key>
+      <PropertyRef Name="Id_ПриходованиеМатериала" />
+    </Key>
+    <Property Name="Id_ПриходованиеМатериала" Type="Int32" Nullable="false" />
+    <Property Name="Дата" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Номер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Сумма" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Склад" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Организация" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Професия">
+    <Key>
+      <PropertyRef Name="Id_Профессий" />
+    </Key>
+    <Property Name="Id_Профессий" Type="Int32" Nullable="false" />
+    <Property Name="Наименование" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Участок" Type="Int32" />
+    <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Оклад" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Статус" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Вывоз_угля" Relationship="Self.FK_Вывоз_угля_Професия" FromRole="Професия" ToRole="Вывоз_угля" />
+    <NavigationProperty Name="Участки" Relationship="Self.FK_Професия_Участки" FromRole="Професия" ToRole="Участки" />
+  </EntityType>
+  <EntityType Name="Работники">
+    <Key>
+      <PropertyRef Name="Id_Работник" />
+    </Key>
+    <Property Name="Id_Работник" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ТабельныйНомер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ФИО" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ПаспортныеДанные" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ДатаРождения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Вывоз_угля" Relationship="Self.FK_Вывоз_угля_Работники" FromRole="Работники" ToRole="Вывоз_угля" />
+  </EntityType>
+  <EntityType Name="Реестр">
+    <Key>
+      <PropertyRef Name="Id_Реестр" />
+    </Key>
+    <Property Name="Id_Реестр" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="СоставНетто" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="СоставГрузоподьемности" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КачествоТовара" Type="Int32" Nullable="false" />
+    <Property Name="СрокДоставки" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Дата" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КолПВ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="КолТонн" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Декларация" Relationship="Self.FK_Декларация_Реестр" FromRole="Реестр" ToRole="Декларация" />
+    <NavigationProperty Name="Качество" Relationship="Self.FK_Реестр_Качество" FromRole="Реестр" ToRole="Качество" />
+  </EntityType>
+  <EntityType Name="Самовывоз">
+    <Key>
+      <PropertyRef Name="Id_Самовывоз" />
+    </Key>
+    <Property Name="Id_Самовывоз" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Сотрудник" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Организация" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Дата" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Номер" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ВыдачаТалона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Вывоз_угля" Relationship="Self.FK_Вывоз_угля_Самовывоз" FromRole="Самовывоз" ToRole="Вывоз_угля" />
+  </EntityType>
+  <EntityType Name="СправДек">
+    <Key>
+      <PropertyRef Name="Id_Деклараций" />
+    </Key>
+    <Property Name="Id_Деклараций" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НомерВТД" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Тонн" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Марка" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Анализ_ВТД" Relationship="Self.FK_Анализ_ВТД_СправДек" FromRole="СправДек" ToRole="Анализ_ВТД" />
+    <NavigationProperty Name="ВПД" Relationship="Self.FK_ВПД_СправДек" FromRole="СправДек" ToRole="ВПД" />
+    <NavigationProperty Name="Накладная" Relationship="Self.FK_Накладная_СправДек" FromRole="СправДек" ToRole="Накладная" />
+  </EntityType>
+  <EntityType Name="СправкаВТД">
+    <Key>
+      <PropertyRef Name="Id_СправкаВТД" />
+    </Key>
+    <Property Name="Id_СправкаВТД" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Декларация_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="МаркаУгля" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Вес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Станция">
+    <Key>
+      <PropertyRef Name="Id_СТ" />
+    </Key>
+    <Property Name="Id_СТ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КодСтанции" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Станцияя" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Дорога" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="СокрНазвание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Страна" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Накладная" Relationship="Self.FK_Накладная_Станция" FromRole="Станция" ToRole="Накладная" />
+  </EntityType>
+  <EntityType Name="Станция2">
+    <Key>
+      <PropertyRef Name="Id_СТТ" />
+    </Key>
+    <Property Name="Id_СТТ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="КодСтанциии" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Станцияяя" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Дорога" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="СокрНазвание" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Страна" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Накладная" Relationship="Self.FK_Накладная_Станция21" FromRole="Станция2" ToRole="Накладная" />
+  </EntityType>
+  <EntityType Name="СтанцияОтправления">
+    <Key>
+      <PropertyRef Name="Id_СтанцияОправления" />
+    </Key>
+    <Property Name="Id_СтанцияОправления" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Страна">
+    <Key>
+      <PropertyRef Name="Id_Страны" />
+    </Key>
+    <Property Name="Id_Страны" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НазваниеСтраны" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НазваниеЖДстанции" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НаправлениеЖД" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Декларация" Relationship="Self.FK_Декларация_Страна" FromRole="Страна" ToRole="Декларация" />
+  </EntityType>
+  <EntityType Name="Страна1">
+    <Key>
+      <PropertyRef Name="Id_Страна1" />
+    </Key>
+    <Property Name="Id_Страна1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Страна2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НаименованиеЖДстанции" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НаправлениеЖД" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Страна2">
+    <Key>
+      <PropertyRef Name="Id_Страны" />
+    </Key>
+    <Property Name="Id_Страны" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НазваниеСтраны" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НазваниеЖДстанции" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="НаправлениеЖД" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Страны">
+    <Key>
+      <PropertyRef Name="Id_Страны" />
+    </Key>
+    <Property Name="Id_Страны" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="СтранаП" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ПолноеНаименование" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ВПД" Relationship="Self.FK_ВПД_Страны" FromRole="Страны" ToRole="ВПД" />
+  </EntityType>
+  <EntityType Name="Участки">
+    <Key>
+      <PropertyRef Name="Id_Участок" />
+    </Key>
+    <Property Name="Id_Участок" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="НаименованиеУчастка" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Подразделение" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Подразделения" Relationship="Self.FK_Участки_Подразделения" FromRole="Участки" ToRole="Подразделения" />
+    <NavigationProperty Name="Професия" Relationship="Self.FK_Професия_Участки" FromRole="Участки" ToRole="Професия" />
+  </EntityType>
+  <Association Name="FK_Анализ_ВТД_КоличествоТоннОтгруженоПоНакладной">
+    <End Role="КоличествоТоннОтгруженоПоНакладной" Type="Self.КоличествоТоннОтгруженоПоНакладной" Multiplicity="0..1" />
+    <End Role="Анализ_ВТД" Type="Self.Анализ_ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КоличествоТоннОтгруженоПоНакладной">
+        <PropertyRef Name="Id_КолТоннПоНакладной" />
+      </Principal>
+      <Dependent Role="Анализ_ВТД">
+        <PropertyRef Name="КоличествоТоннОтгруженоПоНакладнойй" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Анализ_ВТД_КолТоннПоВТД">
+    <End Role="КолТоннПоВТД" Type="Self.КолТоннПоВТД" Multiplicity="0..1" />
+    <End Role="Анализ_ВТД" Type="Self.Анализ_ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КолТоннПоВТД">
+        <PropertyRef Name="Id_КолТоннПоВТД" />
+      </Principal>
+      <Dependent Role="Анализ_ВТД">
+        <PropertyRef Name="Id_КолвоТоннПоВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Анализ_ВТД_Месяц">
+    <End Role="Месяц" Type="Self.Месяц" Multiplicity="1" />
+    <End Role="Анализ_ВТД" Type="Self.Анализ_ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Месяц">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Анализ_ВТД">
+        <PropertyRef Name="Id_Месяц" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Анализ_ВТД_СправДек">
+    <End Role="СправДек" Type="Self.СправДек" Multiplicity="0..1" />
+    <End Role="Анализ_ВТД" Type="Self.Анализ_ВТД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СправДек">
+        <PropertyRef Name="Id_Деклараций" />
+      </Principal>
+      <Dependent Role="Анализ_ВТД">
+        <PropertyRef Name="Id_ВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_КоличествоТоннОтгруженоПоНакладной">
+    <End Role="КоличествоТоннОтгруженоПоНакладной" Type="Self.КоличествоТоннОтгруженоПоНакладной" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КоличествоТоннОтгруженоПоНакладной">
+        <PropertyRef Name="Id_КолТоннПоНакладной" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="КолВоТоннОтгруз" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_КолТоннПоВТД">
+    <End Role="КолТоннПоВТД" Type="Self.КолТоннПоВТД" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КолТоннПоВТД">
+        <PropertyRef Name="Id_КолТоннПоВТД" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="Id_КолВоПоВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_Месяц1">
+    <End Role="Месяц1" Type="Self.Месяц1" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Месяц1">
+        <PropertyRef Name="Id_месяц" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="Id_Месяц3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_СправДек">
+    <End Role="СправДек" Type="Self.СправДек" Multiplicity="0..1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СправДек">
+        <PropertyRef Name="Id_Деклараций" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="Id_ВТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ВПД_Страны">
+    <End Role="Страны" Type="Self.Страны" Multiplicity="1" />
+    <End Role="ВПД" Type="Self.ВПД" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Страны">
+        <PropertyRef Name="Id_Страны" />
+      </Principal>
+      <Dependent Role="ВПД">
+        <PropertyRef Name="СтранаПоПТД" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз_угля_Грузополучатель1">
+    <End Role="Грузополучатель" Type="Self.Грузополучатель" Multiplicity="1" />
+    <End Role="Вывоз_угля" Type="Self.Вывоз_угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Грузополучатель">
+        <PropertyRef Name="Id_Грузополучатель" />
+      </Principal>
+      <Dependent Role="Вывоз_угля">
+        <PropertyRef Name="Грузополучатель" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз_угля_Професия">
+    <End Role="Професия" Type="Self.Професия" Multiplicity="1" />
+    <End Role="Вывоз_угля" Type="Self.Вывоз_угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Професия">
+        <PropertyRef Name="Id_Профессий" />
+      </Principal>
+      <Dependent Role="Вывоз_угля">
+        <PropertyRef Name="Сотрудник" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз_угля_Работники">
+    <End Role="Работники" Type="Self.Работники" Multiplicity="1" />
+    <End Role="Вывоз_угля" Type="Self.Вывоз_угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Работники">
+        <PropertyRef Name="Id_Работник" />
+      </Principal>
+      <Dependent Role="Вывоз_угля">
+        <PropertyRef Name="Сотрудник" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Вывоз_угля_Самовывоз">
+    <End Role="Самовывоз" Type="Self.Самовывоз" Multiplicity="1" />
+    <End Role="Вывоз_угля" Type="Self.Вывоз_угля" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Самовывоз">
+        <PropertyRef Name="Id_Самовывоз" />
+      </Principal>
+      <Dependent Role="Вывоз_угля">
+        <PropertyRef Name="Самовывоз" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Грузополучатель">
+    <End Role="Грузополучатель" Type="Self.Грузополучатель" Multiplicity="1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Грузополучатель">
+        <PropertyRef Name="Id_Грузополучатель" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Грузополучательь" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Отчет_по_складам">
+    <End Role="Отчет_по_складам" Type="Self.Отчет_по_складам" Multiplicity="1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Отчет_по_складам">
+        <PropertyRef Name="Id_ОтчетПоСкладам" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Складыы" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Реестр">
+    <End Role="Реестр" Type="Self.Реестр" Multiplicity="0..1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Реестр">
+        <PropertyRef Name="Id_Реестр" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Реестрр" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Декларация_Страна">
+    <End Role="Страна" Type="Self.Страна" Multiplicity="1" />
+    <End Role="Декларация" Type="Self.Декларация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Страна">
+        <PropertyRef Name="Id_Страны" />
+      </Principal>
+      <Dependent Role="Декларация">
+        <PropertyRef Name="Странаа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Реестр_Качество">
+    <End Role="Качество" Type="Self.Качество" Multiplicity="1" />
+    <End Role="Реестр" Type="Self.Реестр" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Качество">
+        <PropertyRef Name="Id_Качество" />
+      </Principal>
+      <Dependent Role="Реестр">
+        <PropertyRef Name="КачествоТовара" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_КонтрАгент">
+    <End Role="КонтрАгент" Type="Self.КонтрАгент" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="КонтрАгент">
+        <PropertyRef Name="Id_КонтрАгент" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_КонтрАгента" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_МаркаУгля">
+    <End Role="МаркаУгля" Type="Self.МаркаУгля" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="МаркаУгля">
+        <PropertyRef Name="Id_МаркаУгля" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_МаркаУгляя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_Отправитель">
+    <End Role="Отправитель" Type="Self.Отправитель" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Отправитель">
+        <PropertyRef Name="Id_Отправитель" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_Отправ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_СправДек">
+    <End Role="СправДек" Type="Self.СправДек" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="СправДек">
+        <PropertyRef Name="Id_Деклараций" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_Деклараций" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_Станция">
+    <End Role="Станция" Type="Self.Станция" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Станция">
+        <PropertyRef Name="Id_СТ" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_СТАотправ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Накладная_Станция21">
+    <End Role="Станция2" Type="Self.Станция2" Multiplicity="0..1" />
+    <End Role="Накладная" Type="Self.Накладная" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Станция2">
+        <PropertyRef Name="Id_СТТ" />
+      </Principal>
+      <Dependent Role="Накладная">
+        <PropertyRef Name="Id_СТАназнач" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Участки_Подразделения">
+    <End Role="Подразделения" Type="Self.Подразделения" Multiplicity="1" />
+    <End Role="Участки" Type="Self.Участки" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Подразделения">
+        <PropertyRef Name="Id_Подразделение" />
+      </Principal>
+      <Dependent Role="Участки">
+        <PropertyRef Name="Подразделение" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Професия_Участки">
+    <End Role="Участки" Type="Self.Участки" Multiplicity="0..1" />
+    <End Role="Професия" Type="Self.Професия" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Участки">
+        <PropertyRef Name="Id_Участок" />
+      </Principal>
+      <Dependent Role="Професия">
+        <PropertyRef Name="Id_Участок" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PraktikaEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Анализ_ВТД" EntityType="Self.Анализ_ВТД" />
+    <EntitySet Name="ВПД" EntityType="Self.ВПД" />
+    <EntitySet Name="Вывоз_угля" EntityType="Self.Вывоз_угля" />
+    <EntitySet Name="Грузополучатель" EntityType="Self.Грузополучатель" />
+    <EntitySet Name="Декларация" EntityType="Self.Декларация" />
+    <EntitySet Name="Качество" EntityType="Self.Качество" />
+    <EntitySet Name="КоличествоТоннОтгруженоПоНакладной" EntityType="Self.КоличествоТоннОтгруженоПоНакладной" />
+    <EntitySet Name="КолТоннПоВТД" EntityType="Self.КолТоннПоВТД" />
+    <EntitySet Name="КонтрАгент" EntityType="Self.КонтрАгент" />
+    <EntitySet Name="МаркаУгля" EntityType="Self.МаркаУгля" />
+    <EntitySet Name="Месяц" EntityType="Self.Месяц" />
+    <EntitySet Name="Месяц1" EntityType="Self.Месяц1" />
+    <EntitySet Name="Накладная" EntityType="Self.Накладная" />
+    <EntitySet Name="НаКолесах" EntityType="Self.НаКолесах" />
+    <EntitySet Name="Остатки_на_складе" EntityType="Self.Остатки_на_складе" />
+    <EntitySet Name="ОстатокПоВТДд" EntityType="Self.ОстатокПоВТДд" />
+    <EntitySet Name="Отправитель" EntityType="Self.Отправитель" />
+    <EntitySet Name="Отчет_по_складам" EntityType="Self.Отчет_по_складам" />
+    <EntitySet Name="Подразделения" EntityType="Self.Подразделения" />
+    <EntitySet Name="Приходование_материалов" EntityType="Self.Приходование_материалов" />
+    <EntitySet Name="Професия" EntityType="Self.Професия" />
+    <EntitySet Name="Работники" EntityType="Self.Работники" />
+    <EntitySet Name="Реестр" EntityType="Self.Реестр" />
+    <EntitySet Name="Самовывоз" EntityType="Self.Самовывоз" />
+    <EntitySet Name="СправДек" EntityType="Self.СправДек" />
+    <EntitySet Name="СправкаВТД" EntityType="Self.СправкаВТД" />
+    <EntitySet Name="Станция" EntityType="Self.Станция" />
+    <EntitySet Name="Станция2" EntityType="Self.Станция2" />
+    <EntitySet Name="СтанцияОтправления" EntityType="Self.СтанцияОтправления" />
+    <EntitySet Name="Страна" EntityType="Self.Страна" />
+    <EntitySet Name="Страна1" EntityType="Self.Страна1" />
+    <EntitySet Name="Страна2" EntityType="Self.Страна2" />
+    <EntitySet Name="Страны" EntityType="Self.Страны" />
+    <EntitySet Name="Участки" EntityType="Self.Участки" />
+    <AssociationSet Name="FK_Анализ_ВТД_КоличествоТоннОтгруженоПоНакладной" Association="Self.FK_Анализ_ВТД_КоличествоТоннОтгруженоПоНакладной">
+      <End Role="КоличествоТоннОтгруженоПоНакладной" EntitySet="КоличествоТоннОтгруженоПоНакладной" />
+      <End Role="Анализ_ВТД" EntitySet="Анализ_ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Анализ_ВТД_КолТоннПоВТД" Association="Self.FK_Анализ_ВТД_КолТоннПоВТД">
+      <End Role="КолТоннПоВТД" EntitySet="КолТоннПоВТД" />
+      <End Role="Анализ_ВТД" EntitySet="Анализ_ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Анализ_ВТД_Месяц" Association="Self.FK_Анализ_ВТД_Месяц">
+      <End Role="Месяц" EntitySet="Месяц" />
+      <End Role="Анализ_ВТД" EntitySet="Анализ_ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Анализ_ВТД_СправДек" Association="Self.FK_Анализ_ВТД_СправДек">
+      <End Role="СправДек" EntitySet="СправДек" />
+      <End Role="Анализ_ВТД" EntitySet="Анализ_ВТД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_КоличествоТоннОтгруженоПоНакладной" Association="Self.FK_ВПД_КоличествоТоннОтгруженоПоНакладной">
+      <End Role="КоличествоТоннОтгруженоПоНакладной" EntitySet="КоличествоТоннОтгруженоПоНакладной" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_КолТоннПоВТД" Association="Self.FK_ВПД_КолТоннПоВТД">
+      <End Role="КолТоннПоВТД" EntitySet="КолТоннПоВТД" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_Месяц1" Association="Self.FK_ВПД_Месяц1">
+      <End Role="Месяц1" EntitySet="Месяц1" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_СправДек" Association="Self.FK_ВПД_СправДек">
+      <End Role="СправДек" EntitySet="СправДек" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ВПД_Страны" Association="Self.FK_ВПД_Страны">
+      <End Role="Страны" EntitySet="Страны" />
+      <End Role="ВПД" EntitySet="ВПД" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз_угля_Грузополучатель1" Association="Self.FK_Вывоз_угля_Грузополучатель1">
+      <End Role="Грузополучатель" EntitySet="Грузополучатель" />
+      <End Role="Вывоз_угля" EntitySet="Вывоз_угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз_угля_Професия" Association="Self.FK_Вывоз_угля_Професия">
+      <End Role="Професия" EntitySet="Професия" />
+      <End Role="Вывоз_угля" EntitySet="Вывоз_угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз_угля_Работники" Association="Self.FK_Вывоз_угля_Работники">
+      <End Role="Работники" EntitySet="Работники" />
+      <End Role="Вывоз_угля" EntitySet="Вывоз_угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Вывоз_угля_Самовывоз" Association="Self.FK_Вывоз_угля_Самовывоз">
+      <End Role="Самовывоз" EntitySet="Самовывоз" />
+      <End Role="Вывоз_угля" EntitySet="Вывоз_угля" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Грузополучатель" Association="Self.FK_Декларация_Грузополучатель">
+      <End Role="Грузополучатель" EntitySet="Грузополучатель" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Отчет_по_складам" Association="Self.FK_Декларация_Отчет_по_складам">
+      <End Role="Отчет_по_складам" EntitySet="Отчет_по_складам" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Реестр" Association="Self.FK_Декларация_Реестр">
+      <End Role="Реестр" EntitySet="Реестр" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Декларация_Страна" Association="Self.FK_Декларация_Страна">
+      <End Role="Страна" EntitySet="Страна" />
+      <End Role="Декларация" EntitySet="Декларация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Реестр_Качество" Association="Self.FK_Реестр_Качество">
+      <End Role="Качество" EntitySet="Качество" />
+      <End Role="Реестр" EntitySet="Реестр" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_КонтрАгент" Association="Self.FK_Накладная_КонтрАгент">
+      <End Role="КонтрАгент" EntitySet="КонтрАгент" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_МаркаУгля" Association="Self.FK_Накладная_МаркаУгля">
+      <End Role="МаркаУгля" EntitySet="МаркаУгля" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_Отправитель" Association="Self.FK_Накладная_Отправитель">
+      <End Role="Отправитель" EntitySet="Отправитель" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_СправДек" Association="Self.FK_Накладная_СправДек">
+      <End Role="СправДек" EntitySet="СправДек" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_Станция" Association="Self.FK_Накладная_Станция">
+      <End Role="Станция" EntitySet="Станция" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Накладная_Станция21" Association="Self.FK_Накладная_Станция21">
+      <End Role="Станция2" EntitySet="Станция2" />
+      <End Role="Накладная" EntitySet="Накладная" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Участки_Подразделения" Association="Self.FK_Участки_Подразделения">
+      <End Role="Подразделения" EntitySet="Подразделения" />
+      <End Role="Участки" EntitySet="Участки" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Професия_Участки" Association="Self.FK_Професия_Участки">
+      <End Role="Участки" EntitySet="Участки" />
+      <End Role="Професия" EntitySet="Професия" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
